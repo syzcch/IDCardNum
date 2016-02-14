@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RandomIDNum</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="showInfo">请输入如下信息以生成随机身份证号</string>
+    <string name="locationInfo">地点：</string>
+    <string name="timeInfo">时间：</string>
+    <string name="yearInfo">年</string>
+    <string name="monthInfo">月</string>
+    <string name="dayInfo">日</string>
+    <string name="gender">性别：</string>
+    <string name="submit">提交</string>
+    <string name="loadInfo">加载信息</string>
+    <string name="action_gone">Exit</string>
+
+</resources>

@@ -1,0 +1,128 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView android:id="@+id/showInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/showInfo"
+        android:paddingTop="?android:attr/actionBarSize"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView android:id="@+id/locationInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/locationInfo"
+            android:paddingTop="?android:attr/actionBarSize"/>
+
+        <Spinner android:id="@+id/spprovince" android:layout_width="100dip"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <Spinner android:id="@+id/spcity" android:layout_width="100dip"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <Spinner android:id="@+id/sparea" android:layout_width="100dip"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView android:id="@+id/timeInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timeInfo"
+            android:paddingTop="?android:attr/actionBarSize"/>
+
+        <Spinner android:id="@+id/spyear" android:layout_width="100dip"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <TextView android:id="@+id/yearInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yearInfo"
+            android:paddingTop="?android:attr/actionBarSize"/>
+
+        <Spinner android:id="@+id/spmonth" android:layout_width="100dip"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <TextView android:id="@+id/monthInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/monthInfo"
+            android:paddingTop="?android:attr/actionBarSize"/>
+
+        <Spinner android:id="@+id/spday" android:layout_width="100dip"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <TextView android:id="@+id/dayhInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dayInfo"
+            android:paddingTop="?android:attr/actionBarSize"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView android:id="@+id/gender"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            android:paddingTop="?android:attr/actionBarSize"/>
+
+        <RadioGroup android:id="@+id/radioSex" android:layout_width="wrap_content" android:layout_height="wrap_content">
+           <RadioButton android:id="@+id/male" android:layout_width="wrap_content" android:text="Male" android:layout_height="wrap_content" android:checked="true"></RadioButton>
+           <RadioButton android:id="@+id/female" android:layout_width="wrap_content" android:text="Female" android:layout_height="wrap_content"></RadioButton>
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/loadInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loadInfo"
+            android:onClick="loadInfo"
+            android:paddingTop="?android:attr/actionBarSize"
+            android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"/>
+
+        <Button
+            android:id="@+id/runCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:onClick="runIt"
+            android:paddingTop="?android:attr/actionBarSize"
+            android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"/>
+
+        <TextView android:id="@+id/showResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="?android:attr/actionBarSize"/>
+
+    </LinearLayout>
+
+</LinearLayout>
