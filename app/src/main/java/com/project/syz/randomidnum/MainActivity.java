@@ -3,8 +3,10 @@ package com.project.syz.randomidnum;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -46,12 +48,15 @@ public class MainActivity extends ActionBarActivity {
     private Spinner spyear;
     private Spinner spmonth;
     private Spinner spday;
+    private Spinner snum;
     private ArrayList<String> dataYear = new ArrayList<String>();
     private ArrayList<String> dataMonth = new ArrayList<String>();
     private ArrayList<String> dataDay = new ArrayList<String>();
+    private ArrayList<String> dataNum = new ArrayList<String>();
     private ArrayAdapter<String> adapterSpYear;
     private ArrayAdapter<String> adapterSpMonth;
     private ArrayAdapter<String> adapterSpDay;
+    private ArrayAdapter<String> adapterSpNum;
 
     private RadioGroup radioSex;
     private String sex;
@@ -72,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView resText;
 
     private Button btRun;
-    private Button btLoad;
+//    private Button btLoad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,12 +90,37 @@ public class MainActivity extends ActionBarActivity {
         spprovince = (Spinner) findViewById(R.id.spprovince);
         spcity = (Spinner) findViewById(R.id.spcity);
         sparea = (Spinner) findViewById(R.id.sparea);
+        snum = (Spinner)  findViewById(R.id.number);
         resText = (TextView) findViewById(R.id.showResult);
+        //set textview with scroll function
+        resText.setMovementMethod(ScrollingMovementMethod.getInstance());
         btRun = (Button) findViewById(R.id.runCreate);
         btRun.setVisibility(View.INVISIBLE);
-        btLoad = (Button)findViewById(R.id.loadInfo);
+//        btLoad = (Button)findViewById(R.id.loadInfo);
 
         mContext = this;
+        new LoadingDB().execute("");
+    }
+
+    private class LoadingDB extends AsyncTask<String, Integer, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                loadInfo();
+                return "Sucessful!";
+            } catch (Exception e) {
+                Log.e("Database Loading", "Error in loading database");
+                e.printStackTrace();
+                return "Error in loading database";
+            }
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            btRun.setVisibility(View.VISIBLE);
+//            btLoad.setText("重新加载");
+        }
     }
 
     private void CopyAndLoadDB() {
@@ -125,6 +155,16 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    private void InitNumber(){
+        for (int i = 1; i <= 20; i++) {
+            dataNum.add("" + i);
+        }
+        adapterSpNum = new ArrayAdapter<String>(this, R.layout.spinner_item, dataNum);
+        adapterSpNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        snum.setAdapter(adapterSpNum);
+        snum.setSelection(0);
+    }
+
     private void setDateInfo(){
         Calendar cal = Calendar.getInstance();
         for (int i = 0; i <= 80; i++) {
@@ -133,7 +173,7 @@ public class MainActivity extends ActionBarActivity {
         adapterSpYear = new ArrayAdapter<String>(this, R.layout.spinner_item, dataYear);
         adapterSpYear.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spyear.setAdapter(adapterSpYear);
-        spyear.setSelection(80);// this year
+        spyear.setSelection(80);// 2016 default
 
         // 12 months
         for (int i = 1; i <= 12; i++) {
@@ -169,15 +209,8 @@ public class MainActivity extends ActionBarActivity {
         });
 
     }
+    /*
     public void loadInfo(View view) {
-/*
-        CopyAndLoadDB();
-        Log.d("sql    @@@@@@","before exportToCSV");
-        exportToCSV("province.txt","select * from T_Province ",file);
-        exportToCSV("city.txt","select * from T_City ",file);
-        exportToCSV("area.txt","select * from T_Zone ",file);
-*/
-
         setDateInfo();
         CopyAndLoadDB();
 
@@ -186,15 +219,32 @@ public class MainActivity extends ActionBarActivity {
         btRun.setVisibility(View.VISIBLE);
         btLoad.setText("重新加载");
     }
+    */
+
+    public void loadInfo() {
+        setDateInfo();
+        CopyAndLoadDB();
+
+        InitialProvince();
+        InitNumber();
+        singleCalInfo = CalIdInfo.getInstance();
+    }
 
     public void runIt(View view) {
         String res;
+        String resAll="";
+        int num = 0;
+
+        //get num here
+        num = Integer.parseInt(snum.getSelectedItem().toString());
+//        Log.d("@@@@@@@@", String.valueOf(num));
+//        Toast.makeText(this,"num"+ String.valueOf(num),Toast.LENGTH_LONG).show();
+
         // get gender here
         for(int i=0; i<radioSex.getChildCount(); i++){
             RadioButton r = (RadioButton)radioSex.getChildAt(i);
             if(r.isChecked()){
                 sex = r.getText().toString();
-//!                Toast.makeText(this, r.getText(),Toast.LENGTH_LONG).show();
                 break;
             }
         }
@@ -203,14 +253,17 @@ public class MainActivity extends ActionBarActivity {
             && sex != "" && locNum != 0
             && selectedProvince != "" && selectedCity != "" && selectedArea != "")
         {
-            res = singleCalInfo.calIdInfoAll(locNum, spyear.getSelectedItem().toString(), spmonth.getSelectedItem().toString(), spday.getSelectedItem().toString(), sex);
-//            Toast.makeText(this, "Some information is emnpty! ",Toast.LENGTH_LONG).show();
-//            return;
-            resText.setText(res);
+            for(int i = 0; i < num; i++){
+                res = singleCalInfo.calIdInfoAll(locNum, spyear.getSelectedItem().toString(), spmonth.getSelectedItem().toString(), spday.getSelectedItem().toString(), sex);
+                resAll = resAll + res + "\n";
+            }
+ //           res = singleCalInfo.calIdInfoAll(locNum, spyear.getSelectedItem().toString(), spmonth.getSelectedItem().toString(), spday.getSelectedItem().toString(), sex);
+            resAll = resAll.substring(0,resAll.length()-1);
+            resText.setText(resAll);
 
             //copy id number to Clipboard for later use
             ClipboardManager cmb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-            cmb.setText(res);
+            cmb.setText(resAll);
             Toast.makeText(this,"The ID Number has been copied to Clipboard",Toast.LENGTH_LONG).show();
         }
         else{
