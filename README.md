@@ -11,6 +11,8 @@ Create random ID Card Number
 
 省市区的数据以及相应的编码来自网络，抓下来数据进行清理整理并建Sqlite库。
 
+目前的缺陷：多语言适配没有做，多屏幕适配没有做，界面较简陋，待完善。
+
 minSdkVersion 15
 
 This app used for generating a random ID Card number when user need input ID card information to some websites or APPs.
