@@ -11,9 +11,13 @@ Create random ID Card Number
 
 省市区的数据以及相应的编码来自网络，抓下来数据进行清理整理并建Sqlite库。
 
-目前的缺陷：多语言适配没有做，多屏幕适配没有做，界面较简陋，待完善。
 
 minSdkVersion 15
 
 This app used for generating a random ID Card number when user need input ID card information to some websites or APPs.
+A Id card number is composed of the location id, birth date, gender, two random number and a check code. The location id includes province, city and area infomation about a person. So, province, city and area infomation should linkage to show by spinner in a activity.
+
+Users just choose reasonable province, city, area, birth date, gender and quantity  information to generating 1~20 Id card numbers. All Id card numbers are copied to clipboard for later using.
+
+All province, city and area data is coming from Internet. I grab these information and clean and process them. At last I use these informations to loading in to Sqlite tables.
 
