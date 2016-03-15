@@ -5,12 +5,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="showInfo">Please use it to generate Id info</string>
-    <string name="locationInfo">Locate：</string>
-    <string name="timeInfo">Birth Time：</string>
+    <string name="locationInfo">Locate:</string>
+    <string name="timeInfo">Date of birth:</string>
     <string name="yearInfo">Year</string>
     <string name="monthInfo">Month</string>
     <string name="dayInfo">Day</string>
-    <string name="gender">Gender：</string>
+    <string name="gender">Gender:</string>
     <string name="submit">Submit</string>
     <string name="loadInfo">Loading</string>
     <string name="action_gone">Exit</string>

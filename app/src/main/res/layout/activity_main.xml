@@ -48,37 +48,44 @@
         android:orientation="horizontal">
 
         <TextView android:id="@+id/timeInfo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/timeInfo"
-            android:paddingTop="?android:attr/actionBarSize"/>
+            android:paddingTop="?android:attr/actionBarSize"
+            />
+    </LinearLayout>
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Spinner android:id="@+id/spyear" android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Spinner>
         <TextView android:id="@+id/yearInfo"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yearInfo"
-            android:paddingTop="?android:attr/actionBarSize"/>
+            />
 
         <Spinner android:id="@+id/spmonth" android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Spinner>
         <TextView android:id="@+id/monthInfo"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/monthInfo"
-            android:paddingTop="?android:attr/actionBarSize"/>
+            />
 
         <Spinner android:id="@+id/spday" android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Spinner>
         <TextView android:id="@+id/dayhInfo"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dayInfo"
-            android:paddingTop="?android:attr/actionBarSize"/>
+            />
 
     </LinearLayout>
 
