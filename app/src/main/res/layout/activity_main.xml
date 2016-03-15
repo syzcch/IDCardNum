@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bg">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -99,8 +100,8 @@
             android:orientation="horizontal"
             android:paddingTop="?android:attr/actionBarSize">
 
-           <RadioButton android:id="@+id/male" android:layout_width="wrap_content" android:text="Male" android:layout_height="wrap_content" android:checked="true" android:layout_gravity="center" ></RadioButton>
-           <RadioButton android:id="@+id/female" android:layout_width="wrap_content" android:text="Female" android:layout_height="wrap_content" android:layout_gravity="center" ></RadioButton>
+           <RadioButton android:id="@+id/male" android:layout_width="wrap_content" android:text="@string/Male" android:layout_height="wrap_content" android:checked="true" android:layout_gravity="center" ></RadioButton>
+           <RadioButton android:id="@+id/female" android:layout_width="wrap_content" android:text="@string/Female" android:layout_height="wrap_content" android:layout_gravity="center" ></RadioButton>
         </RadioGroup>
 
     </LinearLayout>
@@ -114,7 +115,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="数目："
+            android:text="@string/Num"
             android:paddingTop="?android:attr/actionBarSize"/>
 
         <Spinner android:id="@+id/number" android:layout_width="wrap_content"
